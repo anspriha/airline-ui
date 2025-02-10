@@ -1,0 +1,33 @@
+<div class="register-container">
+   <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <!-- fname Input -->
+    <label for="firstname">First name</label><br>
+    <input id="firstName" formControlName="firstName" type="firstName" placeholder="Enter your First name"/>
+    
+     <!-- lname Input -->
+     <label for="lastname">Last name</label><br>
+     <input id="lastName" formControlName="lastName" type="lastName" placeholder="Enter your Last name"/>
+    
+      <!-- contact number Input -->
+    <label for="contactnumber">Contact Number</label><br>
+    <input id="mobileNumber" formControlName="mobileNumber" type="mobileNumber" placeholder="Enter your contact number"/>
+    
+     <!-- gender Input -->
+     <label for="gender">Gender</label><br>
+     <input id="gender" formControlName="gender" type="gender" placeholder="Enter Gender"/>
+    
+      <!-- username Input -->
+    <label for="userName">User name</label><br>
+    <input id="userName" formControlName="userName" type="userName" placeholder="Enter Username"/>
+    
+     <!-- password Input -->
+     <label for="password">Password</label><br>
+     <input id="password" formControlName="password" type="password" placeholder="Enter password"/>
+         
+    <!-- Submit Button -->
+    <button type="submit">Register</button>
+  </form>
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+</div>
