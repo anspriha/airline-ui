@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../api.service'; 
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../api.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,7 +33,13 @@ export class BookFlightComponent {
       }),
       passengers: this.fb.array([
         this.createPassenger()
-      ])
+      ]),
+      paymentDetails: this.fb.group({
+        cardNumber: ['', [Validators.required, Validators.pattern('[0-9]{16}')]],
+        cardHolderName: ['', Validators.required],
+        expiryDate: ['', Validators.required],
+        cvv: ['', [Validators.required, Validators.pattern('[0-9]{3}')]]
+      })
     });
 
     if (this.flightDetails) {
@@ -42,15 +48,22 @@ export class BookFlightComponent {
   }
 
   private populateFlightDetails(): void {
+    if (!this.flightDetails) return;
     this.bookFlightForm.patchValue({
       bookFlight: {
+        flightNumber: this.flightDetails?.flightNumber || '',
+        origin: this.flightDetails?.origin || '',
+        destination: this.flightDetails?.destination || '',
+        flightDate: this.flightDetails?.flightDate || '',
+        flightTime: this.flightDetails?.flightTime || '',
+        fare: this.flightDetails?.fare?.fare || ''
         // nameOfAirline: this.flightDetails.nameOfAirline,
-        flightNumber: this.flightDetails.flightNumber,
+        /* flightNumber: this.flightDetails.flightNumber,
         origin: this.flightDetails.origin,
         destination: this.flightDetails.destination,
         flightDate: this.flightDetails.flightDate,
         flightTime: this.flightDetails.flightTime,
-        fare: this.flightDetails.fare.fare
+        fare: this.flightDetails.fare.fare */
       }
     });
   }
@@ -84,21 +97,19 @@ export class BookFlightComponent {
     console.log("bookFlightData")
 
     if (this.bookFlightForm.invalid) {
-      this.errorMessage = 'Please Try Again.';
+      this.errorMessage = 'Please fill all required fields correctly.';
       return;
-    }
+    } 
 
     const bookFlightData = this.bookFlightForm.value;
-
     this.apiService.bookFlight(bookFlightData).subscribe(
       (response) => {
-        this.successMessage = 'Flight is Booked successfully'; 
-        
+        this.successMessage = 'Flight booked successfully! Payment confirmed.';
+        this.errorMessage = '';
       },
       (error) => {
-        // Handle error response (invalid data, server error, etc.)
-        this.errorMessage = 'Try once again.';
-        console.error('Error booking flight:', error);
+        this.errorMessage = 'Payment failed. Please check your card details and try again.';
+        this.successMessage = '';
       }
     );
 

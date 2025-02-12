@@ -84,18 +84,35 @@
                 </button>
               </div>
             </div>
+                
+            <br />
+
+            <h6>Payment Details</h6>
+            <div formGroupName="paymentDetails">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Card Number" formControlName="cardNumber" />
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Expiry Date (MM/YY)" formControlName="expiryDate" />
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="CVV" formControlName="cvv" />
+            </div>
+          </div>
+           
 
             <br />
 
             <!-- Submit Button -->
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Book Flight</button>
+              <button type="submit" class="btn btn-primary">Book & Pay</button>
             </div>
           </form>
-
-
+          <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+          <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
