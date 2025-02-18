@@ -23,7 +23,7 @@ export class BookFlightComponent {
     this.flightDetails = history.state.flight || null;
     this.bookFlightForm = this.fb.group({
       bookFlight: this.fb.group({
-        // nameOfAirline: [''],
+        nameOfAirline: [''],
         flightNumber: [''],
         origin: [''],
         destination: [''],
@@ -51,19 +51,13 @@ export class BookFlightComponent {
     if (!this.flightDetails) return;
     this.bookFlightForm.patchValue({
       bookFlight: {
-        flightNumber: this.flightDetails?.flightNumber || '',
-        origin: this.flightDetails?.origin || '',
-        destination: this.flightDetails?.destination || '',
-        flightDate: this.flightDetails?.flightDate || '',
-        flightTime: this.flightDetails?.flightTime || '',
-        fare: this.flightDetails?.fare?.fare || ''
-        // nameOfAirline: this.flightDetails.nameOfAirline,
-        /* flightNumber: this.flightDetails.flightNumber,
+        nameOfAirline: this.flightDetails.flightInfo.airlineInfo.nameOfAirline,
+        flightNumber: this.flightDetails.flightNumber,
         origin: this.flightDetails.origin,
         destination: this.flightDetails.destination,
         flightDate: this.flightDetails.flightDate,
         flightTime: this.flightDetails.flightTime,
-        fare: this.flightDetails.fare.fare */
+        fare: this.flightDetails.fare.fare
       }
     });
   }
@@ -95,12 +89,6 @@ export class BookFlightComponent {
   onBookSubmit(): void {
 
     console.log("bookFlightData")
-
-    if (this.bookFlightForm.invalid) {
-      this.errorMessage = 'Please fill all required fields correctly.';
-      return;
-    } 
-
     const bookFlightData = this.bookFlightForm.value;
     this.apiService.bookFlight(bookFlightData).subscribe(
       (response) => {

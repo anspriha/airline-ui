@@ -9,9 +9,9 @@
 .login-container {
   max-width: 400px;
   margin: 7px auto;
-  padding: 180px;   
+  padding: 180px;
   border-radius: 8px;
- 
+
 }
 
 input {
@@ -38,6 +38,25 @@ button:disabled {
 small {
   color: red;
 }
+
 label {
   color: white;
+}
+
+.alert {
+  color: #D8000C;
+  /* Red color for error text */
+  background-color: #FFBABA;
+  /* Light red background for emphasis */
+  border: 1px solid #D8000C;
+  /* Red border to match the theme */
+  padding: 10px;
+  border-radius: 5px;
+  /* Rounded corners for a softer look */
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 10px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }

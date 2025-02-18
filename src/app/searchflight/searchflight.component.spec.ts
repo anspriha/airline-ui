@@ -10,7 +10,7 @@ describe('SearchflightComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SearchflightComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SearchflightComponent);
     component = fixture.componentInstance;

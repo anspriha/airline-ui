@@ -2,11 +2,10 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="card special-card">
-        <div class="card-header">Book Flights</div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-3">
-              <h6>Your Flight Details</h6>
+              <h4>Your Flight Details</h4>
             </div>
           </div>
 
@@ -25,97 +24,98 @@
               </thead>
               <tbody>
                 <tr>
-                  <!-- <td>{{ bookFlightForm.get('bookFlight.nameOfAirline')?.value }}</td> -->
+                  <td>{{ bookFlightForm.get('bookFlight.nameOfAirline')?.value }}</td>
                   <td>{{ bookFlightForm.get('bookFlight.flightNumber')?.value }}</td>
                   <td>{{ bookFlightForm.get('bookFlight.origin')?.value }}</td>
                   <td>{{ bookFlightForm.get('bookFlight.destination')?.value }}</td>
                   <td>{{ bookFlightForm.get('bookFlight.flightDate')?.value }}</td>
                   <td>{{ bookFlightForm.get('bookFlight.flightTime')?.value }}</td>
-                  <!-- <td>{{ bookFlightForm.get('bookFlight.fare')?.value }}</td> -->
-                  <td>{{ bookFlightForm.get('bookFlight.fare')?.value.fare }}</td>
+                  <td>{{ bookFlightForm.get('bookFlight.fare')?.value }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
+          <form [formGroup]="bookFlightForm" (ngSubmit)="onBookSubmit()">
+            <h4>Enter Passenger Details</h4>
+            <div formArrayName="passengers">
+              <div *ngFor="let passenger of passengers().controls; let i = index" [formGroupName]="i"
+                class="form-container">
+                <div class="form-row">
+                  <div>
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" />
+                  </div>
+                  <div>
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
+                  </div>
+                  <div>
+                    <select class="form-control" formControlName="gender">
+                      <option value="" disabled selected>Gender</option>
+                      <option value="MALE">MALE</option>
+                      <option value="FEMALE">FEMALE</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <!-- <input type="text" class="form-control" placeholder="Mobile Number" formControlName="mobileNumber" /> -->
+                    <input id="mobileNumber" type="text" formControlName="mobileNumber" class="form-control"
+                      placeholder="Enter your contact number"
+                      [class.is-invalid]="passenger.get('mobileNumber')?.touched && passenger.get('mobileNumber')?.invalid" />
+                    <div *ngIf="passenger.get('mobileNumber')?.touched && passenger.get('mobileNumber')?.invalid"
+                      class="invalid-feedback">
+                      <div *ngIf="passenger.get('mobileNumber')?.errors?.['required']">Contact Number is required.</div>
+                      <div *ngIf="passenger.get('mobileNumber')?.errors?.['pattern']">Contact Number must be exactly 10
+                        digits.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <!-- Button to add a new passenger -->
+            <div class="row">
+              <div class="col-md-3">
+                <button type="button" class="btn btn-secondary" (click)="addPassenger()"
+                  [disabled]="passengers().length >= 4">
+                  Add Passenger
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mark>Note: Maximum you can add only 4 passengers</mark>
+                </div>
+              </div>
+            </div>
+
+            <h4>Enter Payment Details</h4>
+            <div formGroupName="paymentDetails">
+              <div class="form-group">
+                <div class="form-group" id="payment">
+                  <input type="text" class="form-control" placeholder="Card Holder Name"
+                    formControlName="cardHolderName" />
+
+                  <input type="text" class="form-control" placeholder="Card Number" formControlName="cardNumber" />
+
+                  <input type="text" class="form-control" placeholder="Expiry Date (MM/YY)"
+                    formControlName="expiryDate" />
+
+                  <input type="text" class="form-control" placeholder="CVV" formControlName="cvv" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Book Flight</button>
+            </div>
+          </form>
+          <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
           <div *ngIf="successMessage" class="alert alert-success" role="alert">
             {{ successMessage }}
           </div>
 
-          <form [formGroup]="bookFlightForm" (ngSubmit)="onBookSubmit()">
-            <div class="row">
-              <div class="col-md-3">
-                <!--<h6>Add Passengers</h6>-->
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <mark>Note: Maximum you can add only 4 passengers</mark>
-              </div>
-            </div>
-
-            <div formArrayName="passengers">
-              <div *ngFor="let passenger of passengers().controls; let i = index" [formGroupName]="i" class="row form-group">
-                <div class="col-md-3">
-                  <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" />
-                </div>
-                <div class="col-md-3">
-                  <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
-                </div>
-                <div class="col-md-3">
-                  <select class="form-control" formControlName="gender">
-                    <option value="" disabled selected>Gender</option>
-                    <option value="MALE">MALE</option>
-                    <option value="FEMALE">FEMALE</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <input type="text" class="form-control" placeholder="Mobile Number" formControlName="mobileNumber" />
-                </div>
-              </div>
-            </div>
-
-            <!-- Button to add a new passenger -->
-            <div class="row">
-              <div class="col-md-3">
-                <button type="button" class="btn btn-secondary" (click)="addPassenger()" [disabled]="passengers().length >= 4">
-                  Add Passenger
-                </button>
-              </div>
-            </div>
-                
-            <br />
-
-            <h6>Payment Details</h6>
-            <div formGroupName="paymentDetails">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Card Holder Name" formControlName="cardHolderName" />
-              </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Card Number" formControlName="cardNumber" />
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Expiry Date (MM/YY)" formControlName="expiryDate" />
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="CVV" formControlName="cvv" />
-            </div>
-          </div>
-           
-
-            <br />
-
-            <!-- Submit Button -->
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary">Book & Pay</button>
-            </div>
-          </form>
-          <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-          <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
         </div>
       </div>
     </div>
   </div>
 </div>
-

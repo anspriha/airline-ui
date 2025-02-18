@@ -1,75 +1,73 @@
-<p>searchflight works!</p>
-
-
-
-
 <div class="searchflight-container">
-
 
     <form [formGroup]="searchFlightForm" (ngSubmit)="onSearchFlight()">
         <!-- Origin Input -->
         <div class="form-group">
+            <div class="card-header border-light text-center">Search Flights</div><br>
             <select class="form-control" id="origin" formControlName="origin">
                 <option value="" disabled selected>Origin</option>
                 <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
             </select>
-        </div>
 
-        <!-- Destination Input -->
-        <div class="form-group">
+
+            <!-- Destination Input -->
+
             <select class="form-control" id="destination" formControlName="destination">
                 <option value="" disabled selected>Destination</option>
                 <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
             </select>
-        </div>
 
-        <!-- Travel Date Input -->
-        <div class="form-group">
+
+            <!-- Travel Date Input -->
+
             <input type="date" id="traveldate" class="form-control" formControlName="flightDate" />
+
+
+            <!-- Submit Button -->
+
+            <button type="submit" class="form-control" class="btn btn-aqua">Search</button>
         </div>
 
-        <!-- Submit Button -->
-        <div class="form-group">
-            <button type="submit" class="btn btn-aqua">Search</button>
+
+        <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
+
+        <div *ngIf="flights && flights.length > 0" class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Airline</th>
+                        <th scope="col">Flight Number</th>
+                        <th scope="col">Origin</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Flight Date</th>
+                        <th scope="col">Flight Time</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Fare</th>
+                        <th scope="col" *ngIf="isAuthenticated">Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let flight of flights">
+                        <td>{{ flight.flightInfo.airlineInfo.nameOfAirline }}</td>
+                        <td>{{ flight.flightNumber }}</td>
+                        <td>{{ flight.origin }}</td>
+                        <td>{{ flight.destination }}</td>
+                        <td>{{ flight.flightDate }}</td>
+                        <td>{{ flight.flightTime }}</td>
+                        <td>{{ flight.duration }}</td>
+                        <td>{{ flight.fare.currency }}{{ flight.fare.fare }}</td>
+                        <td *ngIf="isAuthenticated">
+                            <button class="btn btn-success" (click)="bookFlight(flight)">Book</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </form>
-
-    <div *ngIf="successMessage" class="alert alert-success">
-        {{ successMessage }}
-    </div>
-
-    <div *ngIf="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
-    </div>
-
-    <div *ngIf="flights && flights.length > 0" class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Airline</th>
-                    <th scope="col">Flight Number</th>
-                    <th scope="col">Origin</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Flight Time</th>
-                    <th scope="col">Duration</th>
-                    <th scope="col">Fare</th>
-                    <th scope="col" *ngIf="isAuthenticated">Book</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let flight of flights">
-                    <!-- <td>{{ flight.flightInfo.airlineInfo.nameOfAirline }}</td> -->
-                    <td>{{ flight.flightNumber }}</td>
-                    <td>{{ flight.origin }}</td>
-                    <td>{{ flight.destination }}</td>
-                    <td>{{ flight.flightTime }}</td>
-                    <td>{{ flight.duration }}</td>
-                    <td>{{ flight.fare.currency }}{{ flight.fare.fare }}</td>
-                    <td *ngIf="isAuthenticated">
-                        <button class="btn btn-success" (click)="bookFlight(flight)">Book</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>

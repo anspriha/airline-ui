@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import n
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';  // Assuming you have an ApiService for making API calls
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,  // Mark the component as standalone
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],  // Include necessary imports
-  selector: 'app-register',
+  //selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -17,7 +17,7 @@ export class RegisterComponent {
 
   registerForm: FormGroup; // FormGroup for the registration form
   errorMessage: string = '';  // To store error messages
-  successMessage: string = '';  
+  successMessage: string = '';
 
   constructor(
     private fb: FormBuilder,  // Inject FormBuilder to create the form
@@ -26,19 +26,31 @@ export class RegisterComponent {
   ) {
     // Initialize the form with validation rules directly in the constructor
     this.registerForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      gender: ['', Validators.required],
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      mobileNumber: ['', [
+        Validators.required,
+        Validators.pattern(/^\d{10}$/)
+      ]],
+      gender: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(20),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,20}$') // Password requirements
+      ]]
     });
+  }
+
+  get f() {
+    return this.registerForm.controls;
   }
 
   // Method to handle form submission
   onRegister(): void {
     console.log("registrationData")
-    
+
     if (this.registerForm.invalid) {
       this.errorMessage = 'Please fill in the form correctly.';
       return;
@@ -52,7 +64,7 @@ export class RegisterComponent {
         this.successMessage = 'Registration successful! Click on Login';
         this.resetForm();
         // On success, redirect to login page or any other page
-        this.router.navigate(['/login']);
+        //this.router.navigate(['/login']);
       },
       (error) => {
         // Handle error response (invalid data, server error, etc.)

@@ -1,0 +1,261 @@
+/* General Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+/* Card Styles */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: none;
+  padding: 20px;
+  opacity: 0.7;
+  margin: 60px;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Table Styles */
+.table {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.table-bordered {
+  border: 1px solid #ddd;
+}
+
+/* Alert Styles */
+.alert {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.alert-error {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  border-radius: 5px;
+  border: 1px solid darkslategrey;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+input[type="submit"],
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Input Fields within Form Array */
+.form-group input[type="text"],
+.form-group select {
+  margin-bottom: 10px;
+}
+
+/* Add Passenger Button */
+.btn-secondary {
+  /* background-color: #6c757d; */
+  background-color: #007BFF;
+  border-radius: 5px;
+}
+
+.btn-secondary:disabled {
+  background-color: #ccc;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+}
+
+/* Custom Heading Styles */
+h6 {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+mark {
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Margin adjustments */
+.row {
+  margin-bottom: 20px;
+}
+
+/* Style for the form container */
+.form-container {
+  display: flex;
+  gap: 40px;
+  /* Space between form fields */
+  align-items: center;
+  /* Vertically aligns input fields */
+}
+
+.form-container div {
+  flex: 1;
+  /* Makes the fields share equal space */
+}
+
+.form-row {
+  display: flex;
+  margin-top: 15px;
+  gap: 40px;
+  /* Space between elements in each row */
+}
+
+/* CSS for invalid input fields */
+.is-invalid {
+  border-color: #dc3545 !important;
+  /* Red border for invalid fields */
+}
+
+/* Custom message styling */
+.invalid-feedback {
+  color: #dc3545;
+  /* Red color for error messages */
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* Validation Styling */
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Specific styles for error messages */
+.invalid-feedback div {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Style for inputs when they are valid */
+input:valid {
+  border-color: #28a745;
+}
+
+input:invalid {
+  border-color: #dc3545;
+}
+
+select:valid {
+  border-color: #28a745;
+}
+
+select:invalid {
+  border-color: #dc3545;
+}
+
+/* CSS for invalid input fields */
+.is-invalid {
+  border-color: #dc3545 !important;
+  /* Red border for invalid fields */
+}
+
+/* Custom error message styling */
+.invalid-feedback {
+  color: #dc3545;
+  /* Red color for error messages */
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+div#payment {
+  display: flex;
+  gap: 9px;
+}
