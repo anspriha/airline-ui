@@ -1,0 +1,175 @@
+/* General Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.searchflight-container {
+  opacity: 0.7;
+  margin: 162px 162px 0px 200px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  /* Enables Flexbox layout */
+  justify-content: center;
+  /* Centers the div horizontally */
+  align-items: center;
+  /* Centers the div vertically */
+}
+
+h3,
+h2 {
+  color: #007bff;
+}
+
+/* Welcome Section */
+.searchflight-container h3 {
+  color: #007bff;
+  font-size: 20px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+/* Form Group Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Card Header for Search Flights */
+.card-header {
+  background-color: #007bff;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Input and Select Fields */
+input[type="date"],
+select,
+button[type="submit"] {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  /* width: 100%; */
+  margin-bottom: 15px;
+}
+
+input[type="date"]:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Success/Error Messages */
+.alert {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.alert-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Table Styles for Flight Search Results */
+.table {
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.table-bordered {
+  border: 1px solid #ddd;
+}
+
+/* Book Button in Table */
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 767px) {
+  .searchflight-container {
+    padding: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+
+  .btn-success {
+    padding: 5px 10px;
+  }
+
+  button {
+    padding: 8px 15px;
+  }
+
+}
+
+select#origin {
+  margin-right: 25px;
+}
+
+select#destination {
+  margin-right: 25px;
+}
+
+input#traveldate {
+  margin-right: 25px;
+}

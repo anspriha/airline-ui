@@ -10,7 +10,7 @@ describe('BookflightComponent', () => {
     await TestBed.configureTestingModule({
       imports: [BookflightComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(BookflightComponent);
     component = fixture.componentInstance;

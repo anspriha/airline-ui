@@ -1,0 +1,47 @@
+.about-airline-container {
+    padding: 74px;
+    background-color: #f4f7f9;
+    border-radius: 51px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 64px auto;
+    opacity: 80%;
+}
+
+.about-airline-container h1 {
+    color: #007bff;
+    text-align: center;
+}
+
+section {
+    margin-top: 20px;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+section.team ul li {
+    font-style: italic;
+}
+
+section.fleet p {
+    font-size: 1.3em;
+    font-weight: bold;
+}
