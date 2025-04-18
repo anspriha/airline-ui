@@ -38,7 +38,7 @@ form.ng-untouched.ng-pristine.ng-invalid {
 }
 
 #login {
-  BACKGROUND: lightgray;
+  BACKGROUND: none;
   border: none;
   border-radius: 7px;
   border: none;
@@ -47,7 +47,7 @@ form.ng-untouched.ng-pristine.ng-invalid {
 }
 
 #register {
-  BACKGROUND: lightgray;
+  BACKGROUND: none;
   border: none;
   border-radius: 7px;
   border: none;
@@ -57,7 +57,7 @@ form.ng-untouched.ng-pristine.ng-invalid {
 
 #searchflight {
   /* BACKGROUND: none; */
-  BACKGROUND: lightgray;
+  BACKGROUND: none;
   border: none;
   border-radius: 7px;
   border: none;
@@ -92,7 +92,7 @@ b#welcome {
 
 button#about {
   /* BACKGROUND: none; */
-  BACKGROUND: lightgray;
+  BACKGROUND: none;
   border: none;
   border-radius: 7px;
   border: none;
@@ -105,7 +105,7 @@ button#about {
 
 button#contact {
   /* BACKGROUND: none; */
-  BACKGROUND: lightgray;
+  BACKGROUND: none;
   border: none;
   border-radius: 7px;
   border: none;
