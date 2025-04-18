@@ -1,18 +1,24 @@
 .container {
   background-image: url('assets/images/login.png');
   background-size: cover;
-  background-position: center center; /* Center the image */
-  height: 100vh; /* Make it take the full height of the viewport */
+  background-position: center center;
+  /* Center the image */
+  height: 175vh;
+  /* Make it take the full height of the viewport */
   width: 100%;
-  position:fixed;
+  position: relative;
+  overflow: hidden;
+  /* position:fixed; */
 }
+
 nav.home-nav {
-  position: fixed;
+  position: absolute;
   top: 25px;
   left: 1111px;
   width: 100%;
   padding: -1px 20px;
 }
+
 h1.search {
   position: fixed;
   top: 12px;
@@ -22,6 +28,7 @@ h1.search {
   font-size: larger;
   color: darkblue;
 }
+
 form.ng-untouched.ng-pristine.ng-invalid {
   padding: 209px 0px 0px 522px;
 }
@@ -30,16 +37,81 @@ form.ng-untouched.ng-pristine.ng-invalid {
   display: none;
 }
 
-#login{
+#login {
+  BACKGROUND: lightgray;
+  border: none;
+  border-radius: 7px;
+  border: none;
+  font-size: large;
+  color: darkblue;
+}
+
+#register {
+  BACKGROUND: lightgray;
+  border: none;
+  border-radius: 7px;
+  border: none;
+  font-size: large;
+  color: darkblue;
+}
+
+#searchflight {
+  /* BACKGROUND: none; */
+  BACKGROUND: lightgray;
+  border: none;
+  border-radius: 7px;
+  border: none;
+  font-size: large;
+  color: darkblue;
+  position: absolute;
+  top: 0px;
+  left: -1104px;
+}
+
+#logout {
   BACKGROUND: none;
   border: none;
   font-size: large;
   color: darkblue;
 }
 
-#register{
-  BACKGROUND: none;
+.searchpage {
+  font-size: xxx-large;
+  display: grid;
+  ;
+  place-items: center;
+  height: 100vh;
+  color: white;
+}
+
+b#welcome {
+  font-size: large;
+  margin-left: -55px;
+  color: darkgreen;
+}
+
+button#about {
+  /* BACKGROUND: none; */
+  BACKGROUND: lightgray;
+  border: none;
+  border-radius: 7px;
   border: none;
   font-size: large;
   color: darkblue;
+  position: absolute;
+  top: 0px;
+  left: -964px;
+}
+
+button#contact {
+  /* BACKGROUND: none; */
+  BACKGROUND: lightgray;
+  border: none;
+  border-radius: 7px;
+  border: none;
+  font-size: large;
+  color: darkblue;
+  position: absolute;
+  top: 0px;
+  left: -862px;
 }

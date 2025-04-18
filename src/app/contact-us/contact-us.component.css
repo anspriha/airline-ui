@@ -1,0 +1,95 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f9;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-us-container {
+  max-width: 998px;
+  margin: 78px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 80%;
+}
+
+h1 {
+  text-align: center;
+  color: #007bff;
+}
+
+h2 {
+  color: #333;
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #007bff;
+  font-size: 1.3em;
+  margin-top: 20px;
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
+/* Contact Sections */
+.assistance ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.assistance li {
+  margin-bottom: 15px;
+}
+
+.contact-info {
+  margin-top: 30px;
+}
+
+.contact-item {
+  margin-bottom: 30px;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Social Media Links */
+.social-media {
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-media li {
+  margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-us-container {
+    width: 90%;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.4em;
+  }
+
+  p,
+  .contact-item ul {
+    font-size: 1em;
+  }
+}

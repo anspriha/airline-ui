@@ -1,14 +1,24 @@
 <div class="container">
-  <h1 class="search">Flight</h1>
 
-  <!-- Simple Navigation -->
   <nav class="home-nav">
-    <button id="login" (click)="navigateTo('login')">Login</button>
-    <button id="register" (click)="navigateTo('register')">Register</button>
-    <button id="searchflight" (click)="navigateTo('searchflight')">Search Flight</button>
+    <button id="searchflight" (click)="navigateTo('searchflight')">Search Flights</button>
+    <button id="contact" (click)="navigateTo('contactUS')">Contact Us</button>
+    <button id="about" (click)="navigateTo('aboutUS')">About Us</button>
+    <div *ngIf="showHeader">
+      <button id="login" (click)="navigateTo('login')">Login</button>
+      <button id="register" (click)="navigateTo('register')">Register</button>
+    </div>
+    <div *ngIf="(!showHeader && loggedIn)">
+      <b id="welcome">Hello {{ username }}!</b>
+      <button id="logout" (click)="logout()">Logout</button>
+    </div>
+    <div *ngIf="(!showHeader && !loggedIn)">
+      <button id="login" (click)="navigateTo('login')">Login</button>
+      <button id="register" (click)="navigateTo('register')">Register</button>
+    </div>
   </nav>
 
 
   <router-outlet></router-outlet>
-  
+
 </div>

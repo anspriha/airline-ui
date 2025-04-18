@@ -8,9 +8,9 @@
 .register-container {
   max-width: 400px;
   margin: -90px auto;
-  padding: 140px;   
+  padding: 140px;
   border-radius: 8px;
- 
+
 }
 
 input {
@@ -37,11 +37,70 @@ button:disabled {
 small {
   color: red;
 }
+
 label {
   color: white;
 }
 
 .alert.alert-success {
-  font-weight: bold;
-  color: lightgreen;
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Validation Styling */
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Specific styles for error messages */
+.invalid-feedback div {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Style for inputs when they are valid */
+input:valid {
+  border-color: #28a745;
+}
+
+input:invalid {
+  border-color: #dc3545;
+}
+
+select:valid {
+  border-color: #28a745;
+}
+
+select:invalid {
+  border-color: #dc3545;
+}
+
+/* Button Disabled */
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
